@@ -83,6 +83,7 @@ class SimpleClassifyDataset(torch.utils.data.Dataset):
         samples = []
         for idx in range(*s):
             img_name = os.path.join(self.root_dir, "%07d.jpg" % idx)
+            print(img_name)
             image = np.float32(cv2.imread(img_name))
             sample = {'image': image, 'label': self.content[idx]}
             if self.transform:
@@ -114,6 +115,7 @@ def main():
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
+    print(device)
     net = torchvision.models.resnet18(num_classes=2)
     net.to(device)
 
@@ -123,11 +125,13 @@ def main():
 
     for epoch in range(epochs_from_env):  # loop over the dataset multiple times
         running_loss = 0.0
+        print("epoch: " + epoch)
         for i, data in enumerate(trainloader, 0):
             # get the inputs; # OLD: data is a list of [inputs, labels]
             # inputs, labels = data
 
             inputs = data['image'].to(device)
+            print(inputs)
             labels = batch_to_tensor(data['label']).to(device)
 
             # zero the parameter gradients
