@@ -1,5 +1,5 @@
 clusterId: cltge23zh
-command: apt-get update && apt-get install -y libsm6 libxext6 libxrender-dev && pip install opencv-python && python classify/classify.py
+command: apt-get update && apt-get install -y libgtk2.0-dev libsm6 libxext6 libxrender-dev && pip install opencv-python && python classify/classify.py
 container: pytorch/pytorch:latest
 experimentEnv: 
     TRAIN_EPOCHS: 5
