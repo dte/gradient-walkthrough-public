@@ -125,7 +125,7 @@ def main():
 
     for epoch in range(epochs_from_env):  # loop over the dataset multiple times
         running_loss = 0.0
-        print("epoch: " + epoch)
+        print("epoch: " + str(epoch))
         for i, data in enumerate(trainloader, 0):
             # get the inputs; # OLD: data is a list of [inputs, labels]
             # inputs, labels = data
