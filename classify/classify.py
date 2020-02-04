@@ -83,7 +83,6 @@ class SimpleClassifyDataset(torch.utils.data.Dataset):
         samples = []
         for idx in range(*s):
             img_name = os.path.join(self.root_dir, "%07d.jpg" % idx)
-            print(img_name)
             image = np.float32(cv2.imread(img_name))
             sample = {'image': image, 'label': self.content[idx]}
             if self.transform:
