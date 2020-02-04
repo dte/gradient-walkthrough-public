@@ -100,6 +100,7 @@ import torch.nn.functional as F
 
 batch_size_from_env = int(os.environ.get('BATCH_SIZE', 128))
 epochs_from_env = int(os.environ.get('TRAIN_EPOCHS', 100))
+num_workers_from_env = int(os.environ.get('NUM_WORKERS', 2))
 
 def main():
     full_dataset = SimpleClassifyDataset("/storage/datasets/0001_flare_fog_rain",
@@ -108,10 +109,10 @@ def main():
 
     trainval_idx = int(len(full_dataset) * 0.5)
     trainloader = torch.utils.data.DataLoader(full_dataset[0:trainval_idx], batch_size=batch_size_from_env,
-                                              shuffle=True, num_workers=2)
+                                              shuffle=True, num_workers=num_workers_from_env)
 
     testloader = torch.utils.data.DataLoader(full_dataset[trainval_idx:len(full_dataset)], batch_size=batch_size_from_env,
-                                             shuffle=False, num_workers=2)
+                                             shuffle=False, num_workers=num_workers_from_env)
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 

@@ -4,6 +4,7 @@ container: pytorch/pytorch:latest
 experimentEnv: 
     TRAIN_EPOCHS: 5
     BATCH_SIZE: 64
+    NUM_WORKERS: 1
 machineType: p2.xlarge
 modelType: ONNX
 name: classify-singlenode
